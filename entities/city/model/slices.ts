@@ -1,21 +1,25 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { GetGeoCodeItem } from "@/entities/weather/model";
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { GetGeoCodeItem } from '@/entities/weather/model';
 
 const initialState: {
   list: GetGeoCodeItem[];
 } = {
-  list: !!window && window.localStorage ? JSON.parse(localStorage.getItem('cities') || '[]') : [],
+  list: [],
 };
 
 export const fetchCitiesFromStorage = createAsyncThunk(
-  "cities/fetchCitiesFromStorage",
+  'cities/fetchCitiesFromStorage',
   async () => {
-    return JSON.parse(localStorage.getItem("cities") || "[]");
+    try {
+      return JSON.parse(localStorage?.getItem('cities') || '[]');
+    } catch {
+      return [];
+    }
   }
 );
 
 const citiesSlice = createSlice({
-  name: "cities",
+  name: 'cities',
   initialState,
   reducers: {
     addCity: (state, action: PayloadAction<GetGeoCodeItem>) => {
