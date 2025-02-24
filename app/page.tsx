@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { WeatherWidgetWithGraph } from '@/widgets';
 import { Search } from '@/features';
 
-export function HomePage() {
+const HomePage = () => {
   const [cityText, setCityText] = useState('');
 
   const {

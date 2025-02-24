@@ -4,7 +4,7 @@ import { Button } from '@/shared';
 import { WeatherWidgetWithGraph } from '@/widgets';
 import { usePathname, useRouter } from 'next/navigation';
 
-export function DetailPage() {
+const DetailPage = () => {
   const pathname = usePathname();
   const router = useRouter();
 

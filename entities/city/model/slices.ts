@@ -4,13 +4,13 @@ import { GetGeoCodeItem } from "@/entities/weather/model";
 const initialState: {
   list: GetGeoCodeItem[];
 } = {
-  list: JSON.parse(localStorage.getItem("cities") || "[]"),
+  list: [],
 };
 
 export const fetchCitiesFromStorage = createAsyncThunk(
   "cities/fetchCitiesFromStorage",
   async () => {
-    return JSON.parse(localStorage.getItem("cities") || "[]");
+    return typeof window !== 'undefined' && window.localStorage ? JSON.parse(localStorage.getItem("cities") || "[]") : [];
   }
 );
 
