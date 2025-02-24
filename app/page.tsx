@@ -5,6 +5,7 @@ import {
   GetGeoCodeItem,
   addCity,
   deleteCityByIndex,
+  fetchCitiesFromStorage,
 } from '@/entities';
 
 import { useState, useCallback, useEffect, useMemo } from 'react';
@@ -24,7 +25,7 @@ const HomePage = () => {
     limit: 10,
   });
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const listCities = useSelector<RootState, RootState['cities']['list']>(
     (state) => state.cities.list
@@ -67,6 +68,13 @@ const HomePage = () => {
     );
   }, [searchCities]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchCitiesFromStorage());
+    };
+    fetchData();
+  }, [dispatch]);
+
   return (
     <main className='container mx-auto p-4'>
       <Search
@@ -97,6 +105,6 @@ const HomePage = () => {
       </div>
     </main>
   );
-}
+};
 
 export default HomePage;
