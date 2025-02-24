@@ -73,7 +73,7 @@ export const WeatherWidgetWithGraph: FC<WeatherWidgetWithGraphProps> = memo(
     }, [data]);
 
     const onOpenDetail = useCallback(() => {
-      router.push(`/detail/${lat}-${lon}`);
+      router.push(`/detail/${lat}&${lon}`);
     }, [router, lat, lon]);
 
     useEffect(() => {

@@ -12,7 +12,7 @@ const DetailPage = () => {
 
   const slug = segments[2];
 
-  const [lat, lon] = slug?.split('-').map(Number);
+  const [lat, lon] = slug?.split('&').map(Number);
 
   const handleBack = () => {
     router.push('/');
