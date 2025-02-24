@@ -97,7 +97,7 @@ export const WeatherWidgetWithGraph: FC<WeatherWidgetWithGraphProps> = memo(
                     cursor: 'pointer',
                   }}
                   whileTap={{ scale: 0.9 }}
-                  className='text-red-500 md:w-5 w-7'
+                  className='text-red-500 w-5'
                   onClick={onDelete}
                 >
                   <IconBag />
@@ -110,7 +110,7 @@ export const WeatherWidgetWithGraph: FC<WeatherWidgetWithGraphProps> = memo(
                     cursor: 'pointer',
                   }}
                   whileTap={{ scale: 0.9 }}
-                  className='md:w-5 w-7'
+                  className='w-5'
                   onClick={onOpenDetail}
                 >
                   <IconFullScreen />
