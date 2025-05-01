@@ -1,4 +1,4 @@
-import { DetailPage } from '@/pages/detaill/page';
+import DetailPage from '@/app/pages/detaill';
 import { notFound } from 'next/navigation';
 
 const Detail = async ({ params }: { params: Promise<{ lat: string; lon: string }> }) => {

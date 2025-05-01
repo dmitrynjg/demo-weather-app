@@ -4,7 +4,7 @@ import { MainNavbar } from '@/widgets/MainNavbar/ui/MainNavbar';
 import { WeatherWidget } from '@/widgets/WeatherWidget/ui/WeatherWidget';
 import styles from './page.module.scss';
 
-export const FavoritesPage = () => {
+const FavoritesPage = () => {
   const { favorites, deleteFavoriteCity } = useFavorites();
 
   return (
@@ -26,3 +26,5 @@ export const FavoritesPage = () => {
     </div>
   );
 };
+
+export default FavoritesPage;

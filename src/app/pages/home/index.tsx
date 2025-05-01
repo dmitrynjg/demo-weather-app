@@ -4,7 +4,7 @@ import { useCity } from '@/shared/hooks/useCity';
 import { WeatherWidget } from '@/widgets/WeatherWidget/ui/WeatherWidget';
 import { useFavorites } from '@/shared/hooks/useFavorites';
 
-export const HomePage = () => {
+const HomePage = () => {
   const { city } = useCity();
 
   const { favoritesByLatAndLon, addFavoriteCity, deleteFavoriteCity } = useFavorites();
@@ -27,3 +27,5 @@ export const HomePage = () => {
     </div>
   );
 };
+
+export default HomePage;

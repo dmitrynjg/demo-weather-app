@@ -1,7 +1,3 @@
-import { FavoritesPage } from '@/pages/favorites/page';
+import FavoritesPage from "../pages/favorites";
 
-const Favorites = () => {
-  return <FavoritesPage />;
-};
-
-export default Favorites;
+export default FavoritesPage;

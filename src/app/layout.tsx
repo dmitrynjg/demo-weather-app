@@ -1,10 +1,10 @@
 'use client';
-import styles from './layout.module.scss';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
-const queryClient = new QueryClient();
-
+import styles from './layout.module.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+const queryClient = new QueryClient()
 
 export default function RootLayout({
   children,
@@ -12,12 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body className={styles.content}>
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
-      </body>
+    <html lang='ru'>
+      <QueryClientProvider client={queryClient}>
+        <body className={styles.content}>{children}</body>
+      </QueryClientProvider>
     </html>
   );
 }

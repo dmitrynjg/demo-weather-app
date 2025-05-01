@@ -9,7 +9,7 @@ export interface DetailPageProps {
   lon: number;
 }
 
-export const DetailPage: FC<DetailPageProps> = ({ lat, lon }) => {
+const DetailPage: FC<DetailPageProps> = ({ lat, lon }) => {
   const { favoritesByLatAndLon, addFavoriteCity, deleteFavoriteCity } =
     useFavorites();
     
@@ -28,3 +28,5 @@ export const DetailPage: FC<DetailPageProps> = ({ lat, lon }) => {
     </div>
   );
 };
+
+export default DetailPage;
