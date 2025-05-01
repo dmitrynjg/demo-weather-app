@@ -1,0 +1,28 @@
+.list {
+  display: grid;
+  grid-auto-columns: calc((100% - 2 * 10px) / 3);
+  grid-gap: 10px;
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.actions {
+}
+
+.iconContainer {
+  & svg {
+    width: 25px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.iconHeart {
+  color: 'red';
+  &:hover {
+
+    color: 'red';
+  }
+}
