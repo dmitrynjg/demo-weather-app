@@ -6,23 +6,29 @@ import { useFavorites } from '@/shared/hooks/useFavorites';
 
 const HomePage = () => {
   const { city } = useCity();
-
   const { favoritesByLatAndLon, addFavoriteCity, deleteFavoriteCity } = useFavorites();
 
   return (
-    <div>
+    <div className="min-vh-100">
       <MainNavbar />
 
       {city ? (
-        <WeatherWidget
-          lat={city.lat}
-          lon={city.lon}
-          isLike={favoritesByLatAndLon[`${city.lat},${city.lon}`]}
-          onLike={() => addFavoriteCity(city.lat, city.lon)}
-          onDelete={() => deleteFavoriteCity(city.lat, city.lon)}
-        />
+        <div className="container mt-4">
+          <WeatherWidget
+            lat={city.lat}
+            lon={city.lon}
+            isLike={favoritesByLatAndLon[`${city.lat},${city.lon}`]}
+            onLike={() => addFavoriteCity(city.lat, city.lon)}
+            onDelete={() => deleteFavoriteCity(city.lat, city.lon)}
+          />
+        </div>
       ) : (
-        <span>ничего не найдено</span>
+        <div className="d-flex justify-content-center align-items-center">
+          <div className="text-center">
+            <h2 className="text-muted">Ничего не выбрано</h2>
+            <p className="text-secondary mt-2">Найдите город в поиске</p>
+          </div>
+        </div>
       )}
     </div>
   );
