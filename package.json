@@ -17,8 +17,6 @@
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
-    "stylelint-config-standard": "^38.0.0",
-    "stylelint-config-standard-scss": "^14.0.0",
     "stylelint-webpack-plugin": "^5.0.1",
     "zustand": "^5.0.3"
   },
@@ -30,6 +28,9 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
     "sass": "^1.87.0",
+    "stylelint": "^16.19.1",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-config-standard-scss": "^14.0.0",
     "typescript": "^5"
   }
 }

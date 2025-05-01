@@ -1,7 +1,25 @@
-.list {
-  display: grid;
-  grid-auto-columns: calc((100% - 2 * 10px) / 3);
-  grid-gap: 10px;
-  grid-auto-flow: column;
-  overflow: scroll hidden;
+.errorContainer {
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .alert {
+        margin: 0;
+    }
+}
+
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    background: rgb(255 255 255 / 80%);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+
+    .spinner {
+        width: 3rem;
+        height: 3rem;
+        border-width: 0.25em;
+    }
 }

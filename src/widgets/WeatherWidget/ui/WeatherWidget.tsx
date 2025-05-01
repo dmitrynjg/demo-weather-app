@@ -3,7 +3,7 @@ import { WeatherCard } from '@/entities/Weather/ui/WeatherCard';
 import { useGetForecast } from '@/shared/api/query/useGetForecast';
 import { FC, useState, useMemo, useEffect } from 'react';
 import styles from './WeatherWidget.module.scss';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner, Alert } from 'react-bootstrap';
 import { useRouter } from 'next/navigation';
 
 export interface WeatherWidgetProps {
@@ -15,40 +15,66 @@ export interface WeatherWidgetProps {
   isFull?: boolean;
 }
 
-export const WeatherWidget: FC<WeatherWidgetProps> = ({ lat, lon, isFull, isLike, onLike, onDelete }) => {
+export const WeatherWidget: FC<WeatherWidgetProps> = ({
+  lat,
+  lon,
+  isFull,
+  isLike,
+  onLike,
+  onDelete,
+}) => {
   const [day, setDay] = useState(1);
-
-  const cnt = useMemo(() => {
-    return day * 8 + 1;
-  }, [day]);
-
-  const { data, isLoading, refetch } = useGetForecast({
-    lat,
-    lon,
-    cnt,
-  });
-
-  const { first, list } = useMemo(() => {
-    return {
-      first: data?.list?.length ? data?.list[0] : null,
-      list: data?.list?.slice(0, data?.list.length) || [],
-    };
-  }, [data]);
-
-  useEffect(() => {
-    if (day) {
-      refetch();
-    }
-  }, [day, refetch]);
-
+  const cnt = useMemo(() => day * 8 + 1, [day]);
+  const { data, isLoading, error, refetch } = useGetForecast({ lat, lon, cnt });
   const router = useRouter();
 
-  const openDetail = () => {
-    router.push(`/detail/${lat}/${lon}`);
-  };
+  const { first, list } = useMemo(
+    () => ({
+      first: data?.list?.[0] || null,
+      list: data?.list?.slice(0, data?.list.length) || [],
+    }),
+    [data]
+  );
+
+  useEffect(() => {
+    if (day) refetch();
+  }, [day, refetch]);
+
+  const openDetail = () => router.push(`/detail/${lat}/${lon}`);
+  
+  if (error) {
+    return (
+      <div className={styles.errorContainer}>
+        <Alert variant="danger">
+          <Alert.Heading>Ошибка загрузки данных</Alert.Heading>
+          <p>{error.message || 'Неизвестная ошибка'}</p>
+          <div className="d-flex justify-content-end">
+            <Button 
+              variant="outline-danger" 
+              onClick={() => refetch()}
+              size="sm"
+            >
+              Повторить попытку
+            </Button>
+          </div>
+        </Alert>
+      </div>
+    );
+  }
 
   if (isLoading) {
-    return null;
+    return (
+      <div className={styles.loadingContainer}>
+        <Spinner
+          animation="border"
+          role="status"
+          variant="primary"
+          className={styles.spinner}
+        >
+          <span className="visually-hidden">Загрузка погоды...</span>
+        </Spinner>
+      </div>
+    );
   }
 
   return (
