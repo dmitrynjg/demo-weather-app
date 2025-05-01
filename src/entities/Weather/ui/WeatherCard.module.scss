@@ -1,17 +1,9 @@
 .iconContainer {
-    & svg {
-      width: 25px;
-    }
-    &:hover {
-      cursor: pointer;
-    }
+  & svg {
+    width: 25px;
   }
-  
-  .iconHeart {
-    color: 'red';
-    &:hover {
-  
-      color: 'red';
-    }
+
+  &:hover {
+    cursor: pointer;
   }
-  
+}

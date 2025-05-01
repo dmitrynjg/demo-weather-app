@@ -1,6 +1,6 @@
 .navbar {
     padding: 0.5rem 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
     background-color: #f8f9fa !important;
   }
   
@@ -32,12 +32,12 @@
     
     &:hover {
       color: #0d6efd !important;
-      background-color: rgba(13, 110, 253, 0.1);
+      background-color: rgb(13 110 253 / 10%);
       border-radius: 0.25rem;
     }
   }
   
-  @media (max-width: 992px) {
+  @media (width <= 992px) {
     .searchWrapper {
       margin: 1rem 0;
       order: 2;

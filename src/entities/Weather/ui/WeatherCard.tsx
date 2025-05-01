@@ -49,7 +49,7 @@ export const WeatherCard: FC<WeatherCardProps> = ({
                   {isLike ? (
                     <IconBag />
                   ) : (
-                    <IconHeart className={styles.iconHeart} />
+                    <IconHeart />
                   )}
                 </span>
 
