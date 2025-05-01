@@ -10,7 +10,15 @@ const FavoritesPage = () => {
   return (
     <div>
       <MainNavbar />
-      <div className={styles.list}> 
+      <div className={styles.list}>
+        {favorites.length === 0 && (
+          <div className='d-flex justify-content-center align-items-center'>
+            <div className='text-center'>
+              <h3 className='text-muted'>Ничего не добавлено</h3>
+              <p className='text-secondary mt-2'>Список пуст</p>
+            </div>
+          </div>
+        )}
         {favorites.map((cityByCoords) => (
           <WeatherWidget
             key={`${cityByCoords.lat}-${cityByCoords.lon}`}
